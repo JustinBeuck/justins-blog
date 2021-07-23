@@ -1,0 +1,20 @@
+
+
+<mat-accordion multi="true" *ngIf="blogs.length > 0">
+    <mat-expansion-panel *ngFor="let blog of blogs">
+      <mat-expansion-panel-header>
+          <div>
+            <span style="font-weight: bold;">{{ blog.title | titlecase}}</span>
+        <div>
+            <small>{{blog.createdDate | date : 'mediumDate'}}</small>
+        </div>
+          </div>
+      </mat-expansion-panel-header>
+      <p>{{ blog.body }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+  <p class="info-text mat-body-1" *ngIf="blogs.length <= 0">No blogs added yet!</p>
+
+  <p class="info-text mat-body-2" *ngIf="blogs.length > 0">Total Blogs: {{blogs.length}}</p>
+  

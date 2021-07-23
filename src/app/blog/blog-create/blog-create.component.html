@@ -1,0 +1,41 @@
+<div class="add-blog-post" *ngIf="!showBlogCreateComponent">
+    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="onAddBlogClick()">
+        <mat-icon>note_add</mat-icon> Add Blog Post
+    </button>
+</div>
+
+<mat-card *ngIf="showBlogCreateComponent">
+    <form (submit)="onAddBlog(blogForm)" #blogForm="ngForm">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="title"
+          ngModel
+          required
+          minlength="3"
+          placeholder="Blog Title"
+          #title="ngModel">
+        <mat-error *ngIf="title.invalid">Please enter a blog title.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          rows="4"
+          name="content"
+          ngModel
+          required
+          placeholder="Blog Content"
+          #content="ngModel"></textarea>
+        <mat-error *ngIf="content.invalid">Please enter a blog content.</mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit">Save Blog</button>
+        &nbsp;
+        <button
+        mat-raised-button
+        (click)="onCancelBlogClick()">Cancel</button>
+    </form>
+  </mat-card>
